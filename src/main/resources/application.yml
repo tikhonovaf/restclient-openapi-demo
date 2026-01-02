@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.web.client.RestClient: DEBUG
+services:
+  pet:
+    url: "http://pet-service.com/v2"
+  store:
+    url: "http://store-service.com/v2"

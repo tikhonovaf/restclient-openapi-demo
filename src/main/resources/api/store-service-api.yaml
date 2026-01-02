@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: Store Service
+  version: 1.0.0
+tags:
+  - name: Store # Класс будет называться StoreApi
+paths:
+  /store/{storeId}:
+    get:
+      tags:
+        - Store # ОБЯЗАТЕЛЬНО: привязка метода к тегу
+      summary: Get store by ID
+      operationId: getStoreById
+      parameters:
+        - name: storeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+components:
+  schemas:
+    Store:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        shipDate:
+          type: string
+          format: date-time

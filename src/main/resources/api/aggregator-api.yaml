@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: Pet Aggregator API
+  version: 1.0.0
+paths:
+  /aggregate/{petId}/{storeId}:
+    get:
+      summary: Get details about a pet and its store
+      operationId: getAggregatedInfo
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: storeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful aggregation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AggregatedInfo'
+components:
+  schemas:
+    AggregatedInfo:
+      type: object
+      properties:
+        petName:
+          type: string
+        storeAddress:
+          type: string
+        status:
+          type: string
